@@ -37,7 +37,7 @@ class Memory {
 
     int addProcess(int memsize, char tag);
     int addProcessWorst(int memsize, char tag);
-    int addProcessNext(int memsize, char tag, int loc, int & nextloc);
+    int addProcessNext(int memsize, char tag, unsigned int loc, int & nextloc);
     void removeProcess(char c, int & loc);
     void print();
     void defrag();

@@ -19,7 +19,7 @@
 #include "Memory.h"
 using namespace std;
 int framesPerLine = 32;
-int frameSize = 256;
+unsigned int frameSize = 256;
 
 
   Memory::Memory() {
@@ -52,12 +52,13 @@ int frameSize = 256;
   }
 
  void Memory::print(){
-  int curpart= 0;
+  unsigned int curpart= 0;
   unsigned int used =0;
+  int tracker  = 0;
   cout << std::string(framesPerLine, '=') << endl;
   while(true){
     if (used % framesPerLine==0 && used != 0){ cout << endl;}
-    if ( curpart < usedpartitions.size() && used >= usedpartitions[curpart][0] && used <= usedpartitions[curpart][1])
+    if ( curpart < usedpartitions.size() && tracker >= usedpartitions[curpart][0] && tracker <= usedpartitions[curpart][1])
     {
       std::map<char,int>::const_iterator itr;
       char key = '.';
@@ -71,7 +72,7 @@ int frameSize = 256;
       }
       cout << key ;
 
-      if (used == usedpartitions[curpart][1]){
+      if (tracker == usedpartitions[curpart][1]){
         curpart+=1;
       }
     }
@@ -82,6 +83,7 @@ int frameSize = 256;
    
     if (used >= frameSize-1) {break;}
     used +=1;
+    tracker +=1;
 
   }
 
@@ -294,7 +296,7 @@ int frameSize = 256;
 
 
 
-  int Memory::addProcessNext(int memsize, char tag , int start, int & placed){
+  int Memory::addProcessNext(int memsize, char tag , unsigned int start, int & placed){
 
      if (memsize > freebytes){
       return -1;

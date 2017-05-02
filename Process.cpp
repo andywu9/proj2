@@ -23,10 +23,10 @@ using namespace std;
     name = n;
     memsize = mysize;
     
-    for (int i =0; i < runs.size(); i++)
+    for (unsigned int i =0; i < runs.size(); i++)
     {
         vector<int > tmp;
-        for (int j = 0; j < runs[i].size(); j++){
+        for (unsigned int j = 0; j < runs[i].size(); j++){
             tmp.push_back(runs[i][j]);
         }
         runtimes.push_back(tmp);
@@ -63,7 +63,7 @@ using namespace std;
   std::vector<std::vector< int > > Process::getRuntimes(){return runtimes;}
   bool Process::runNow(int t ){
     //cout << "ya" << t << " " <<runtimes.size() << endl;
-    for (int i =0; i < runtimes.size(); i++)
+    for (unsigned int i =0; i < runtimes.size(); i++)
     {
         //cout << "ya" << t << " " <<runtimes[i][0];
         if (runtimes[i][0] == t)
@@ -74,7 +74,7 @@ using namespace std;
   }
   bool Process::remNow(int t ){
     //cout << "ya" << t << " " <<runtimes.size() << endl;
-    for (int i =0; i < runtimes.size(); i++)
+    for (unsigned int i =0; i < runtimes.size(); i++)
     {
         //cout << "ya" << t << " " <<runtimes[i][0];
         if (runtimes[i][0] + runtimes[i][1] == t)
@@ -85,7 +85,7 @@ using namespace std;
   }
 
   void Process::add(int t, int add){
-    for (int i =0; i < runtimes.size(); i++)
+    for (unsigned int i =0; i < runtimes.size(); i++)
     {
         //cout << "ya" << t << " " <<  add << " " <<runtimes[i][0] << endl;
         
@@ -94,7 +94,7 @@ using namespace std;
     }
   }
   void Process::set(int t){
-    for (int i =0; i < runtimes.size(); i++)
+    for (unsigned int i =0; i < runtimes.size(); i++)
     {
         if (runtimes[i][0] == t){
           runtimes[i][1] = 0;
@@ -103,7 +103,7 @@ using namespace std;
   }
 
   bool Process::isDone(int t){
-    for (int i =0; i < runtimes.size(); i++)
+    for (unsigned int i =0; i < runtimes.size(); i++)
     {
        
         if (runtimes[i][0] + runtimes[i][1] > t){
