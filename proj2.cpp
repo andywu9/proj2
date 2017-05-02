@@ -336,23 +336,23 @@ int main(int argc, char* argv[]) {
   int dots = 256;
   skip = false;
   vector<vector<char> > nc;
-  for (int i = 0; i < 8; i++) {
+  for (unsigned int i = 0; i < 8; i++) {
     vector<char> row;
-    for (int j = 0; j < 32; j++) {
+    for (unsigned int j = 0; j < 32; j++) {
       row.push_back('.');
     }
     nc.push_back(row);
   }
   cout <<endl << "time 0ms: Simulator started (Non-contiguous)" << endl;
   while (true) {
-    for (int i = 0; i < myProcess4.size(); i++) {
+    for (unsigned int i = 0; i < myProcess4.size(); i++) {
       if (myProcess4[i]->remNow(t4)) {
         cout << "time " << t4 << "ms: Process " << myProcess4[i]->getName() << " removed:" << endl;
         removeNCProcess(myProcess4[i]->getName(), nc, dots);
         printNC(nc);
       }
     }
-    for (int i = 0; i < myProcess4.size(); i++) {
+    for (unsigned int i = 0; i < myProcess4.size(); i++) {
       if (myProcess4[i]->runNow(t4)){
         if (not skip){
           cout << "time "<< t4<<"ms: Process "<< myProcess4[i]->getName() <<" arrived (requires "<< myProcess4[i]->getSize() << " frames)" << endl;
@@ -371,7 +371,7 @@ int main(int argc, char* argv[]) {
     }
 
     bool finished = true;
-    for (int a =0; a < myProcess4.size(); a++){
+    for (unsigned int a =0; a < myProcess4.size(); a++){
       if (not myProcess4[a]->isDone(t4)){
         finished = false;
         break;
@@ -393,8 +393,8 @@ int addNCProcess(int size, char name, vector<vector<char> > &v, int &dots) {
   if (size > dots) {
     return -1;
   }
-  for (int i = 0; i < v.size(); i++) {
-    for (int j = 0; j < v[i].size(); j++) {
+  for (unsigned int i = 0; i < v.size(); i++) {
+    for (unsigned int j = 0; j < v[i].size(); j++) {
       if (v[i][j] == '.' && size > 0) {
         v[i][j] = name;
         dots--;
@@ -405,8 +405,8 @@ int addNCProcess(int size, char name, vector<vector<char> > &v, int &dots) {
   return 0;
 }
 void removeNCProcess(char name, vector<vector<char> > &v, int &dots) {
-  for (int i = 0; i < v.size(); i++) {
-    for (int j = 0; j < v[i].size(); j++) {
+  for (unsigned int i = 0; i < v.size(); i++) {
+    for (unsigned int j = 0; j < v[i].size(); j++) {
       if (v[i][j] == name) {
         v[i][j] = '.';
         dots++;
@@ -416,8 +416,8 @@ void removeNCProcess(char name, vector<vector<char> > &v, int &dots) {
 }
 void printNC(vector<vector<char> > v) {
   cout << std::string(32, '=') << endl;
-  for (int i = 0; i < v.size(); i++) {
-    for (int j = 0; j < v[i].size(); j++) {
+  for (unsigned int i = 0; i < v.size(); i++) {
+    for (unsigned int j = 0; j < v[i].size(); j++) {
       cout << v[i][j];
     }
     cout << endl;
