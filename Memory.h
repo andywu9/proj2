@@ -26,6 +26,7 @@ class Memory {
     std::vector<std::vector < int > >usedpartitions;
 
     std::map<char,int> locations;
+    int mostrecent;
 
 
   public:

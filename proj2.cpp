@@ -158,6 +158,7 @@ int main(int argc, char* argv[]) {
 
   }
 
+  
 
   int t = 0;
   cout <<endl << "time 0ms: Simulator started (Contiguous -- Best-Fit)" << endl;
