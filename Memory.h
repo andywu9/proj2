@@ -1,6 +1,6 @@
-// Mike Adams
-// Andy Wu
-// Daniel Choi
+// Mike Adams adamsm6
+// Andy Wu    wua6
+// Daniel Choi choid5
 #ifndef __mem_h
 #define __mem_h
 

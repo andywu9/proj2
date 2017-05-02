@@ -1,8 +1,6 @@
-
-
-// Mike Adams
-// Andy Wu
-// Daniel Choi
+// Mike Adams adamsm6
+// Andy Wu    wua6
+// Daniel Choi choid5
 #ifndef __process_h
 // Mike Adams
 // Andy Wu
