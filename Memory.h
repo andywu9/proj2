@@ -40,7 +40,7 @@ class Memory {
     void removeProcess(char c, int & loc);
     void print();
     void defrag();
-    int used();
+    int used(std::vector<char> & spots);
     
     
 

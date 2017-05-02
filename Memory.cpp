@@ -204,7 +204,7 @@ int frameSize = 256;
 
  }
 
- int Memory::used(){
+ int Memory::used(vector<char> & spots){
   int counter = 0; 
   int loc =0;
   for (int i =0; i < usedpartitions.size(); i++)
@@ -215,7 +215,17 @@ int frameSize = 256;
       counter += usedpartitions[i][1] - usedpartitions[i][0] +1;
     }
     else{
-      break;
+      std::map<char,int>::const_iterator itr;
+      char key = '.';
+
+      for (itr = locations.begin(); itr != locations.end(); itr++){
+        if (itr->second == usedpartitions[i][0])
+        {
+          key = itr->first;
+          break;
+        }
+      }
+      spots.push_back(key);
     }
 
   }

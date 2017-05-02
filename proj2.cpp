@@ -83,6 +83,7 @@ int main(int argc, char* argv[]) {
   int loc = 0;
   int next_loc = 0;
   bool  skip = false;
+  vector<char> np;
   while (true)
   {
     for (int i = 0; i < myProcess3.size(); i++)
@@ -118,16 +119,26 @@ int main(int argc, char* argv[]) {
         else{
           for (int j= 0; j < myProcess3.size(); j++)
           {
-            myProcess3[j]->add(t3, myMem->used());
+            myProcess3[j]->add(t3, myMem->used(np));
           }
+          cout << "time "<< t3 << "ms: Cannot place process " << myProcess[i]->getName() << " -- starting defragmentation" << endl;
+          int added = t3;
+          vector<char> spots;
+          t3+= myMem->used(spots) -1;
+          added = t3 - added;
+
           myMem->defrag();
           
           skip = true;
           // after a remove the nextspotstart is changed
-          cout << "time "<< t3 << "ms: Cannot place process " << myProcess3[i]->getName() << " -- starting defragmentation" << endl;
-          cout << "time " << t3+ myMem->used()-1 <<": Defragmentation complete (moved 210 frames: B, C, D, E, F) **************" << endl;
+          
+          cout << "time " << t3 +1 <<"ms: Defragmentation complete (moved " << added +1 << " frames: " << spots[0];
+          for (int k=1; k < spots.size(); k++){
+            cout << ", " << spots[k];
+          }
+          cout << ")" << endl;
           myMem->print();
-          t3+= myMem->used() -1;
+          
         }
       }
     }
@@ -187,14 +198,22 @@ int main(int argc, char* argv[]) {
         else{
           for (int j= 0; j < myProcess.size(); j++)
           {
-            myProcess[j]->add(t, myMem->used());
+            myProcess[j]->add(t, myMem->used(np));
           }
+          cout << "time "<< t << "ms: Cannot place process " << myProcess[i]->getName() << " -- starting defragmentation" << endl;
+          int add = t;
+          vector<char> spots;
+          t+= myMem->used(spots) -1;
+          add = t - add;
           myMem->defrag();
           skip = true;
-          cout << "time "<< t << "ms: Cannot place process " << myProcess[i]->getName() << " -- starting defragmentation" << endl;
-          cout << "ttime " << t + myMem->used() -1 <<": Defragmentation complete (moved 210 frames: B, C, D, E, F) **************" << endl;
+          cout << "time " << t+1  <<"ms: Defragmentation complete (moved " << add +1 << " frames: " << spots[0];
+          for (int k=1; k < spots.size(); k++){
+            cout << ", " << spots[k];
+          }
+          cout << ")" << endl;
           myMem->print();
-          t+= myMem->used() -1;
+          
         }
       }
     }
@@ -257,13 +276,20 @@ int main(int argc, char* argv[]) {
         else{
           for (int j= 0; j < myProcess2.size(); j++)
           {
-            myProcess2[j]->add(t2, myMem->used());
+            myProcess2[j]->add(t2, myMem->used(np));
           }
+          int add = t2;
+          vector<char> spots;
           cout << "time "<< t2 << "ms: Cannot place process " << myProcess2[i]->getName() << " -- starting defragmentation" << endl;
-          t2+= myMem->used() -1;
+          t2+= myMem->used(spots) -1;
+          add = t2 - add;
           myMem->defrag();
           skip = true;
-          cout << "ttime " << t2 <<": Defragmentation complete (moved 210 frames: B, C, D, E, F) **************" << endl;
+          cout << "time " << t2+1 <<"ms: Defragmentation complete (moved " << add + 1 << " frames: "<< spots[0];
+          for (int k=1; k < spots.size(); k++){
+            cout << ", " << spots[k];
+          }
+          cout << ")" << endl;
           myMem->print();
           
         }
