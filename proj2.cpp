@@ -13,8 +13,8 @@
 
 using namespace std;
 
-int addNCProcess(int size, char name, vector<vector<char> > &v, int dots);
-void removeNCProcess(char name, vector<vector<char> > &v, int dots);
+int addNCProcess(int size, char name, vector<vector<char> > &v, int &dots);
+void removeNCProcess(char name, vector<vector<char> > &v, int &dots);
 void printNC(vector<vector<char> > v);
 
 int main(int argc, char* argv[]) {
