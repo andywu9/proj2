@@ -1,3 +1,8 @@
+// Mike Adams
+// Andy Wu
+// Daniel Choi
+
+
 #include <algorithm> 
 #include <vector>
 #include <iostream>

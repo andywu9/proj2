@@ -4,6 +4,10 @@
 // Andy Wu
 // Daniel Choi
 #ifndef __process_h
+// Mike Adams
+// Andy Wu
+// Daniel Choi
+
 #define __process_h
 
 #include <iostream>
