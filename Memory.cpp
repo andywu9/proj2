@@ -53,7 +53,7 @@ int frameSize = 256;
 
  void Memory::print(){
   int curpart= 0;
-  int used =0;
+  unsigned int used =0;
   cout << std::string(framesPerLine, '=') << endl;
   while(true){
     if (used % framesPerLine==0 && used != 0){ cout << endl;}
@@ -99,7 +99,7 @@ int frameSize = 256;
    
    vector< vector < int > > ret;
 
-   for (int i =0; i < usedpartitions.size(); i++)
+   for (unsigned int i =0; i < usedpartitions.size(); i++)
    {
     vector<int > tmp2;
 
@@ -134,7 +134,7 @@ int frameSize = 256;
   itr=locations.find(tag);
   locations.erase(itr); 
   int ending = 0;
-  for (int i =0; i < usedpartitions.size(); i++)
+  for (unsigned int i =0; i < usedpartitions.size(); i++)
   {
     if (usedpartitions[i][0] == loc){
       ending = usedpartitions[i][1];
@@ -146,7 +146,7 @@ int frameSize = 256;
   }
   bool hit = false;
   //cout << "Ending " << ending << " start: " << loc << " " << tag << endl;
-  for (int i =0; i < freepartitions.size(); i++)
+  for (unsigned int i =0; i < freepartitions.size(); i++)
   {
     //cout << freepartitions[i][0] << " ----" << freepartitions[i][1] <<  endl;
     if (freepartitions[i][1] == loc-1){
@@ -208,7 +208,7 @@ int frameSize = 256;
  int Memory::used(vector<char> & spots){
   int counter = 0; 
   int loc =0;
-  for (int i =0; i < usedpartitions.size(); i++)
+  for (unsigned int i =0; i < usedpartitions.size(); i++)
   {
     if (usedpartitions[i][0] == loc)
     {
@@ -243,7 +243,7 @@ int frameSize = 256;
      int ending = 0;
      bool found = false;
      int spot =0;
-     for (int i=0; i < freepartitions.size(); i++)
+     for (unsigned int i=0; i < freepartitions.size(); i++)
      {
       if (freepartitions[i][1] - freepartitions[i][0] +1 >= memsize){      // need to handle start to finish 
         if (min >= freepartitions[i][1] - freepartitions[i][0]+1) 
@@ -270,7 +270,7 @@ int frameSize = 256;
        tmp.push_back(ending);
        vector < vector < int > > tmp2;
        bool added = false;
-       for (int k =0; k < usedpartitions.size(); k++)
+       for (unsigned int k =0; k < usedpartitions.size(); k++)
        {
         if (!added && tmp[1] < usedpartitions[k][0])
         { 
@@ -304,7 +304,7 @@ int frameSize = 256;
      int ending = 0;
      bool found = false;
      int spot =0;
-     for (int i=start; i < freepartitions.size(); i++)
+     for (unsigned int i=start; i < freepartitions.size(); i++)
      {
       if (freepartitions[i][1] - freepartitions[i][0] +1 >= memsize){      // need to handle start to finish 
 
@@ -317,7 +317,7 @@ int frameSize = 256;
                tmp.push_back(mostrecent + memsize -1 );
                vector < vector < int > > tmp2;
                bool added = false;
-               for (int k =0; k < usedpartitions.size(); k++)
+               for (unsigned int k =0; k < usedpartitions.size(); k++)
                {
                 if (!added && tmp[1] < usedpartitions[k][0])
                 { 
@@ -333,14 +333,14 @@ int frameSize = 256;
                locations[tag] = mostrecent;
                freepartitions[i][1] = mostrecent -1;
                vector<vector<int > > tmpa;
-               for (int c = 0; c < i; c++){
+               for (unsigned int c = 0; c < i; c++){
                 tmpa.push_back(freepartitions[c]);
                }
                vector<int> sub;
                sub.push_back(freepartitions[i][0]);
                sub.push_back(mostrecent -1);
                tmpa.push_back(sub);
-               for (int c = i+1; c < freepartitions.size(); c++){
+               for (unsigned int c = i+1; c < freepartitions.size(); c++){
                 tmpa.push_back(freepartitions[c]);
                }
                freepartitions = tmpa;
@@ -363,7 +363,7 @@ int frameSize = 256;
      }
      if (not found){
 
-      for (int i=0; i <= start; i++)
+      for (unsigned int i=0; i <= start; i++)
       {
       if (freepartitions[i][1] - freepartitions[i][0] +1 >= memsize){      // need to handle start to finish 
         
@@ -397,7 +397,7 @@ int frameSize = 256;
        tmp.push_back(ending);
        vector < vector < int > > tmp2;
        bool added = false;
-       for (int k =0; k < usedpartitions.size(); k++)
+       for (unsigned int k =0; k < usedpartitions.size(); k++)
        {
         if (!added && tmp[1] < usedpartitions[k][0])
         { 
@@ -430,7 +430,7 @@ int Memory::addProcessWorst(int memsize, char tag){
      int ending = 0;
      bool found = false;
      int spot =0;
-     for (int i=0; i < freepartitions.size(); i++)
+     for (unsigned int i=0; i < freepartitions.size(); i++)
      {
       if (freepartitions[i][1] - freepartitions[i][0] +1 >= memsize){      // need to handle start to finish 
         if (max <= freepartitions[i][1] - freepartitions[i][0]+1) 
@@ -457,7 +457,7 @@ int Memory::addProcessWorst(int memsize, char tag){
        tmp.push_back(ending);
        vector < vector < int > > tmp2;
        bool added = false;
-       for (int k =0; k < usedpartitions.size(); k++)
+       for (unsigned int k =0; k < usedpartitions.size(); k++)
        {
         if (!added && tmp[1] < usedpartitions[k][0])
         { 
