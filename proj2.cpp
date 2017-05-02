@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
   vector<char> np;
   while (true)
   {
-    for (int i = 0; i < myProcess3.size(); i++)
+    for (unsigned int i = 0; i < myProcess3.size(); i++)
     {
       if (myProcess3[i]->remNow(t3)){
         cout << "time " << t3 << "ms: Process " << myProcess3[i]->getName() << " removed:" << endl;
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
         myMem->print();
       }
     }
-    for (int i = 0; i < myProcess3.size(); i++)
+    for (unsigned int i = 0; i < myProcess3.size(); i++)
     {
       
       if (myProcess3[i]->runNow(t3)){
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
           myProcess3[i]->set(t3);
         }
         else{
-          for (int j= 0; j < myProcess3.size(); j++)
+          for (unsigned int j= 0; j < myProcess3.size(); j++)
           {
             myProcess3[j]->add(t3, myMem->used(np));
           }
@@ -139,7 +139,7 @@ int main(int argc, char* argv[]) {
           // after a remove the nextspotstart is changed
           
           cout << "time " << t3 +1 <<"ms: Defragmentation complete (moved " << added +1 << " frames: " << spots[0];
-          for (int k=1; k < spots.size(); k++){
+          for (unsigned int k=1; k < spots.size(); k++){
             cout << ", " << spots[k];
           }
           cout << ")" << endl;
@@ -150,7 +150,7 @@ int main(int argc, char* argv[]) {
     }
     
     bool finished = true;
-    for (int a =0; a < myProcess3.size(); a++){
+    for (unsigned int a =0; a < myProcess3.size(); a++){
       if (not myProcess3[a]->isDone(t3)){
         finished = false;
         break;
@@ -164,6 +164,7 @@ int main(int argc, char* argv[]) {
 
   }
 
+  
 
   int t = 0;
   cout <<endl << "time 0ms: Simulator started (Contiguous -- Best-Fit)" << endl;
@@ -175,14 +176,14 @@ int main(int argc, char* argv[]) {
   
   while (true)
   {
-    for (int i = 0; i < myProcess.size(); i++){
+    for (unsigned int i = 0; i < myProcess.size(); i++){
       if (myProcess[i]->remNow(t)){
           cout << "time " << t << "ms: Process " << myProcess[i]->getName() << " removed:" << endl;
           myMem->removeProcess(myProcess[i]->getName(),v);
           myMem->print();
         }
       }
-    for (int i = 0; i < myProcess.size(); i++)
+    for (unsigned int i = 0; i < myProcess.size(); i++)
     {
       
       
@@ -202,7 +203,7 @@ int main(int argc, char* argv[]) {
           myProcess[i]->set(t);
         }
         else{
-          for (int j= 0; j < myProcess.size(); j++)
+          for (unsigned int j= 0; j < myProcess.size(); j++)
           {
             myProcess[j]->add(t, myMem->used(np));
           }
@@ -214,7 +215,7 @@ int main(int argc, char* argv[]) {
           myMem->defrag();
           skip = true;
           cout << "time " << t+1  <<"ms: Defragmentation complete (moved " << add +1 << " frames: " << spots[0];
-          for (int k=1; k < spots.size(); k++){
+          for (unsigned int k=1; k < spots.size(); k++){
             cout << ", " << spots[k];
           }
           cout << ")" << endl;
@@ -225,7 +226,7 @@ int main(int argc, char* argv[]) {
     }
     
     bool finished = true;
-    for (int a =0; a < myProcess.size(); a++){
+    for (unsigned int a =0; a < myProcess.size(); a++){
       if (not myProcess[a]->isDone(t)){
         finished = false;
         break;
@@ -253,7 +254,7 @@ int main(int argc, char* argv[]) {
   myMem = new Memory();
   while (true)
   {
-    for (int i = 0; i < myProcess2.size(); i++)
+    for (unsigned int i = 0; i < myProcess2.size(); i++)
     {
       if (myProcess2[i]->remNow(t2)){
         cout << "time " << t2 << "ms: Process " << myProcess2[i]->getName() << " removed:" << endl;
@@ -261,7 +262,7 @@ int main(int argc, char* argv[]) {
         myMem->print();
       }
     }
-    for (int i = 0; i < myProcess2.size(); i++)
+    for (unsigned int i = 0; i < myProcess2.size(); i++)
     {
       
       if (myProcess2[i]->runNow(t2)){
@@ -280,7 +281,7 @@ int main(int argc, char* argv[]) {
           myProcess2[i]->set(t2);
         }
         else{
-          for (int j= 0; j < myProcess2.size(); j++)
+          for (unsigned int j= 0; j < myProcess2.size(); j++)
           {
             myProcess2[j]->add(t2, myMem->used(np));
           }
@@ -292,7 +293,7 @@ int main(int argc, char* argv[]) {
           myMem->defrag();
           skip = true;
           cout << "time " << t2+1 <<"ms: Defragmentation complete (moved " << add + 1 << " frames: "<< spots[0];
-          for (int k=1; k < spots.size(); k++){
+          for (unsigned int k=1; k < spots.size(); k++){
             cout << ", " << spots[k];
           }
           cout << ")" << endl;
@@ -303,7 +304,7 @@ int main(int argc, char* argv[]) {
     }
     
     bool finished = true;
-    for (int a =0; a < myProcess2.size(); a++){
+    for (unsigned int a =0; a < myProcess2.size(); a++){
       if (not myProcess2[a]->isDone(t2)){
         finished = false;
         break;
